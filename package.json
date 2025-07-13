@@ -1,0 +1,51 @@
+{
+  "name": "text-to-qr",
+  "author": {
+    "name": "Vem Aiensi",
+    "email": "vem.aiensi@gmail.com"
+  },
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "a text to qr code app",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "run-p dev:react dev:electron",
+    "dev:react": "vite",
+    "dev:electron": "pnpm run transpile:electron && cross-env NODE_ENV=development electron .",
+    "build": "tsc -b && vite build",
+    "transpile:electron": "tsc --project src/electron/tsconfig.json",
+    "dist:linux": "pnpm run build && pnpm run transpile:electron && electron-builder --linux --x64",
+    "dist:win": "pnpm run build && pnpm run transpile:electron && electron-builder --win --x64",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.2.0",
+    "@mui/material": "^7.2.0",
+    "html2canvas": "^1.4.1",
+    "qrcode": "^1.5.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.1",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react-swc": "^3.10.2",
+    "cross-env": "^7.0.3",
+    "electron": "^37.2.1",
+    "electron-builder": "^26.0.12",
+    "eslint": "^9.30.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.35.1",
+    "vite": "^7.0.4"
+  }
+}
